@@ -1,42 +1,32 @@
 ---
 import { Picture } from 'astro:assets';
 import img from '~/assets/mountains-8314422.svg';
+import { SiteTitle } from '~/config';
 import MarkdownLayout from '~/layouts/MarkdownLayout.astro';
 ---
 
-<MarkdownLayout title="About" description="About this site." currentNav="About">
+<MarkdownLayout title={`关于 - ${SiteTitle}`} description="About this site." currentNav="About">
 	<Picture
 		class="lg:float-right lg:ml-4 lg:w-2/5"
 		src={img}
 		formats={['avif', 'webp']}
 		alt="mountains"
 	/>
-	<p>Text placeholder via <a href="https://jeffsum.com/" target="_blank">Jeffsum</a>.</p>
-	<p>
-		So you two dig up, dig up dinosaurs? What do they got in there? King Kong? My dad once told me,
-		laugh and the world laughs with you, Cry, and I'll give you something to cry about you little
-		bastard! Life finds a way. God creates dinosaurs. God destroys dinosaurs. God creates Man. Man
-		destroys God. Man creates Dinosaurs.
-	</p>
-	<p>
-		You really think you can fly that thing? You know what? It is beets. I've crashed into a beet
-		truck. Forget the fat lady! You're obsessed with the fat lady! Drive us out of here! Is this my
-		espresso machine? Wh-what is-h-how did you get my espresso machine?
-	</p>
-	<p>
-		Hey, you know how I'm, like, always trying to save the planet? Here's my chance. Hey, take a
-		look at the earthlings. Goodbye! I was part of something special. Just my luck, no ice. You're a
-		very talented young man, with your own clever thoughts and ideas. Do you need a manager?
-	</p>
-	<p>
-		Jaguar shark! So tell me - does it really exist? This thing comes fully loaded. AM/FM radio,
-		reclining bucket seats, and... power windows. Yes, Yes, without the oops! You're a very talented
-		young man, with your own clever thoughts and ideas. Do you need a manager?
-	</p>
-	<p>
-		Yes, Yes, without the oops! Do you have any idea how long it takes those cups to decompose.
-		They're using our own satellites against us. And the clock is ticking. Do you have any idea how
-		long it takes those cups to decompose. My dad once told me, laugh and the world laughs with you,
-		Cry, and I'll give you something to cry about you little bastard!
-	</p>
+	
+	<p>大家好！</p>
+	<p>我是张晓刚，欢迎来到我的个人网站。</p>
+	
+	<h3>我的故事</h3>
+	我是一个地地道道的农村孩子，2009年大学毕业后，正式踏入了互联网行业。从一开始的迷茫，到后来的摸爬滚打，这十几年里，我先后在电商、游戏、区块链等行业待过，做过运维、开发，也带过团队。</p>
+	
+	<p>2022年，我做了一个重大决定：辞职！和老婆一起创立了我们自己的公司——云字节。</p>
+	<p>云字节是一家小型互联网公司，专注于软件开发和平台创新。公司虽然不大，但胜在灵活，日常技术研发的活儿基本都由我负责。</p>
+	
+	<h3>我的技术栈</h3>
+	<p>这些年，我写过各种类型的项目：网站、App、小程序、游戏……用过的语言包括 C++、PHP、Java、Go，也折腾过前端的 React、Vue、Angular 等各种框架。</p>
+	<p>虽然技术上什么都碰过，但真要说精通，我觉得自己还有很大的提升空间。希望借着这个网站，边记录边成长，和大家一起交流进步！</p>
+	
+	<h3>写这个网站的目的</h3>
+	<p>在这里，我会分享我的日常生活和技术学习的点滴，偶尔也聊聊创业的心得。</p>
+	<p>希望你们能喜欢，也希望这里能成为一个交流、碰撞想法的小天地！</p>
 </MarkdownLayout>

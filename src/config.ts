@@ -1,11 +1,11 @@
 import type { PostHideElements } from '~/content/config';
 
-export const Site = 'https://astro-blog-zozo.pages.dev';
+export const Site = 'https://www.jason-z.com';
 export const SiteLanguage = 'zh';
 export const SiteTitle = '张晓刚';
-export const SiteDescription = '踏歌长行，梦想永在';
+export const SiteDescription = '一个技术爱好者。';
 export const FooterDescription = '一个技术爱好者。';
-export const AdminName = 'Ladit';
+export const AdminName = '张晓刚';
 export const PageSize = 15;
 
 // socialPlatform => userName
@@ -18,7 +18,7 @@ export const Socials: Record<string, Record<string, string>> = {
 	// facebook: { url: 'https://facebook.com/userName' },
 	// instagram: { url: 'https://instagram.com/userName' },
 	// telegram: { url: 'https://t.me/@userName' },
-	youtube: { url: 'https://youtube.com/@userName' },
+	// youtube: { url: 'https://youtube.com/@userName' },
 	// skype: { url: 'https://skype.com/userName' },
 	// slack: { url: 'https://slack.com/userName' },
 	// messenger: { url: 'https://messenger.com/userName' },
@@ -26,10 +26,10 @@ export const Socials: Record<string, Record<string, string>> = {
 	// snapchat: { url: 'https://snapchat.com/userName' },
 	// line: { url: 'https://line.com/userName' },
 	// twitch: { url: 'https://twitch.com/userName' },
-	weibo: { url: 'https://weibo.com/userName' },
-	bilibili: { url: 'https://space.bilibili.com/userName' },
+	weibo: { url: 'https://weibo.com/u/1593268993' },
+	bilibili: { url: 'https://space.bilibili.com/314910023' },
 	// dingding: { url: 'https://dingtalk.com/userName' },
-	zhihu: { url: 'https://zhihu.com/userName' },
+	zhihu: { url: 'https://www.zhihu.com/people/jasonzz' },
 	// douban: { url: 'https://douban.com/userName' },
 	rss: { url: '/rss.xml' },
 };
@@ -37,10 +37,10 @@ export const Socials: Record<string, Record<string, string>> = {
 // doc: https://giscus.app
 // data-theme is auto changed between noborder_light / noborder_gray
 export const GiscusConfig: Record<string, string> = {
-	'data-repo': 'ladit/astro-blog-zozo',
-	'data-repo-id': 'R_kgDOLgobXQ',
+	'data-repo': 'jasonz1987/jasonz-website',
+	'data-repo-id': 'R_kgDONc2rGg',
 	'data-category': 'Announcements',
-	'data-category-id': 'DIC_kwDOLgobXc4Cd_N6',
+	'data-category-id': 'DIC_kwDONc2rGs4ClLv-',
 	'data-mapping': 'pathname',
 	'data-strict': '0',
 	'data-reactions-enabled': '1',
