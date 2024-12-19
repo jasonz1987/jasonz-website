@@ -154,12 +154,16 @@ for (const platform in Socials) {
 </script>
 
 <script>
-	var _hmt = _hmt || [];
+	  // @ts-ignore
+	 var _hmt: any[] = _hmt || [];
 	(function() {
 	  var hm = document.createElement("script");
 	  hm.src = "https://hm.baidu.com/hm.js?9df80c64395dc22f25b7879090db0805";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
+	  var s = document.getElementsByTagName("script")[0];
+	  if (s.parentNode) {  // 确保 parentNode 存在
+		s.parentNode.insertBefore(hm, s);
+	  }
 	})();
-</script>
+  </script>
+  
 	
