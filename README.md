@@ -6,7 +6,11 @@ This is [jasonz's website](https://jasonz-z.com) built with [Astro](https://astr
 ## Getting Started
 
 ```shell
-    npm run dev
+bun install
+
+bun run dev
+
+bun run build
 ```
 
 # Posts

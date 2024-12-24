@@ -1,0 +1,32 @@
+---
+import { SiteTitle } from '~/config';
+import ScaffoldLayout from '~/layouts/ScaffoldLayout.astro';
+import { getPostsGroupedByDate } from '~/utils/collection';
+
+// 获取按年月分组的文章
+const groupedPosts = await getPostsGroupedByDate(false, 'desc');
+---
+
+<ScaffoldLayout title={`归档- ${SiteTitle}`} description="Article Archive">
+  <h3 class="mb-8 text-5xl ">归档</h3>
+  <div>
+    {/* 遍历每个按年月分组的文章 */}
+    {Object.keys(groupedPosts).map((yearMonth) => {
+      const posts = groupedPosts[yearMonth];
+      const [year, month] = yearMonth.split('-');
+      const postCount = posts.length; // 该月份的文章数量
+
+      const archiveLink = `/archives/${year}-${month}/`;
+
+      return (
+        <section>
+          <h3>
+            <a href={archiveLink}>
+              {year}年{month}月 ({postCount}篇)
+            </a>
+          </h3>    
+        </section>
+      );
+    })}
+  </div>
+</ScaffoldLayout>;

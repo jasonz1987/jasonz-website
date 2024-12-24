@@ -1,0 +1,62 @@
+---
+import type { GetStaticPathsOptions } from 'astro';
+import Paginator from '~/components/Paginator.astro';
+import PostCard from '~/components/PostCard.astro';
+import { PageSize, SiteTitle } from '~/config';
+import ScaffoldLayout from '~/layouts/ScaffoldLayout.astro';
+import { getPosts } from '~/utils/collection';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	// 获取所有文章
+	const allPosts = await getPosts(false, 'desc');
+
+	// 用 Set 来去重每篇文章的年月（通过 lastmod 字段）
+	const dedupYearMonth = new Set<string>();
+
+	for (const post of allPosts) {
+		const date = post.data.lastmod ?? post.data.date;
+		if (!date) continue; // 如果没有日期，则跳过
+
+		const year = date.getFullYear();
+		const month = date.getMonth() + 1; // 月份从0开始
+		const yearMonthKey = `${year}-${month < 10 ? '0' : ''}${month}`;
+		dedupYearMonth.add(yearMonthKey); // 使用 Set 来确保年月唯一
+	}
+
+	// 使用 paginate 函数来为每个月的文章生成分页路径
+	return [...dedupYearMonth].flatMap((yearMonth) => {
+		return paginate(
+			allPosts.filter((post) => {
+				const date = post.data.lastmod ?? post.data.date;
+				if (!date) return false;
+				const year = date.getFullYear();
+				const month = date.getMonth() + 1;
+				const yearMonthKey = `${year}-${month < 10 ? '0' : ''}${month}`;
+				return yearMonthKey === yearMonth; // 过滤出该年月的文章
+			}),
+			{
+				params: {
+					year: yearMonth.split('-')[0],
+					month: yearMonth.split('-')[1],
+				},
+				pageSize: PageSize, // 分页大小
+			},
+		);
+	});
+}
+
+const { page } = Astro.props;
+const { year, month } = Astro.params;
+---
+
+<ScaffoldLayout title={`${year}-${month} - ${SiteTitle}`} description="Article Archive">
+  <h3 class="mb-8 text-2xl ">归档：<span class="font-extrabold">{year}-{month}</span></h3>
+  <div>
+    {page.data.map((post) => {
+      return (
+          <PostCard {...post} />
+      );
+    })}
+  </div>
+  <Paginator {...page} />
+</ScaffoldLayout>;

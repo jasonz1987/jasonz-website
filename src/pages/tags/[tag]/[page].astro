@@ -27,6 +27,7 @@ const { tag } = Astro.params;
 ---
 
 <ScaffoldLayout title={`${tag} - ${SiteTitle}`} description={`Posts with tag ${tag}`} currentNav="Tags">
+	<h3 class="mb-8 text-2xl ">标签： <span class="font-extrabold">{tag}</span></h3>
 	{page.data.map((post) => <PostCard {...post} />)}
 	<Paginator {...page} />
 </ScaffoldLayout>
