@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import Comments from '~/components/Comments.astro';
-import { Hide, type HideElements } from '~/config';
+import { Hide, SiteTitle, type HideElements } from '~/config';
 import type { PostHideElements } from '~/content/config';
 import ScaffoldLayout from './ScaffoldLayout.astro';
 import 'katex/dist/katex.css';
@@ -11,7 +11,7 @@ type Props = CollectionEntry<'posts'>['data'] & {
 	currentNav?: string;
 	socialImage?: string;
 };
-const { title, date, lastmod, tags, readingTime, hide } = Astro.props;
+const { title, date, lastmod, tags, readingTime, hide, description,currentNav } = Astro.props;
 const show = (key: string) =>
 	!(
 		Hide.includes(key as HideElements) ||
@@ -21,9 +21,10 @@ const showDate = date && show('date');
 const showLastmod = lastmod && show('lastmod');
 const showReadingTime = readingTime && show('readingTime');
 const showTimes = showDate || showLastmod || showReadingTime;
+const fullTitle = currentNav == 'Home' ? `${SiteTitle} - ${description}` : `${title} - ${SiteTitle}`;
 ---
 
-<ScaffoldLayout {...Astro.props}>
+<ScaffoldLayout {...Astro.props} title={fullTitle}>
 	{title && show('title') && <h1 class="text-5xl font-extrabold">{title}</h1>}
 	<div class="my-[1dvh] text-neutral-600 lg:my-[3dvh] dark:text-neutral-300">
 		{
