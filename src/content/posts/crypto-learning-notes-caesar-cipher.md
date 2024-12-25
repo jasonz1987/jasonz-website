@@ -23,6 +23,9 @@ tags:
 明文字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZ  
 密文字母表：DEFGHIJKLMNOPQRSTUVWXYZABC
 
+![Caesar cipher -
+Wikipedia](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Caesar_cipher_left_shift_of_3.svg/1200px-Caesar_cipher_left_shift_of_3.svg.png)
+
 实际使用中，直接替换，就可以进行加密和解密了，例如：
 
 **明文**：THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG  
@@ -64,3 +67,51 @@ s = 4
 print("Text  : " + text)
 print("Shift : " + str(s))
 print("Cipher: " + encrypt(text, s))
+```
+
+## 破解方法
+
+在已知偏移量的情况下的破解方法在上面的破解原理里已经说的较为清楚了，我们直接上代码
+
+```python
+#A python program to illustrate Caesar Cipher Technique
+def encrypt(text,s):
+    result = ""
+ 
+    # traverse text
+    for i in range(len(text)):
+        char = text[i]
+ 
+        # Encrypt uppercase characters
+        if (char.isupper()):
+            result += chr((ord(char) + s-65) % 26 + 65)
+ 
+        # Encrypt lowercase characters
+        else:
+            result += chr((ord(char) + s - 97) % 26 + 97)
+ 
+    return result
+ 
+#check the above function
+text = "ATTACKATONCE"
+s = 4
+print ("Text  : " + text)
+print ("Shift : " + str(s))
+print ("Cipher: " + encrypt(text,s))
+```
+
+1）穷举法，实际我们的最大偏移量最多也就25，那么我们只要将密文分别进行1-25的偏移量解密，然后通过观察和分析解密后的明文的语义，基本上就能找出对应的偏移量。
+
+2）频率分析法：正常情况下，对我们对明文中进行频率分析，会得出出现最高的单词应该为E，那么，我们同样对密文也进行频率分析，得出频率最高的单词，那么就可以计算出偏移量。
+
+图例中为偏移量为1时，加密前后的字母频率分析对比。可以很清晰地看出之前为E，之后为F，从而推断偏移量基本为1.
+
+![](https://miro.medium.com/max/1400/1*nZnP-Rpr-psKqSGoIXomvA.png)
+
+当然，这种破解方法和密文的长度还是有关系的，密文长度越长，更接近自然语言，准确率越高。
+
+
+
+## 参考文献
+
+<https://en.wikipedia.org/wiki/Caesar_cipher>

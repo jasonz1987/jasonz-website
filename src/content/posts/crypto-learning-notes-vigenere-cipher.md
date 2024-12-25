@@ -19,6 +19,8 @@ tags:
 
 首先，为了生成密码/密钥，我们需要借助表格法。这一表格包括了26行字母表，每一行都由前一行向左偏移一位得到，如图所示：
 
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Vigen%C3%A8re_square.svg/300px-Vigen%C3%A8re_square.svg.png)
+
 例如，假设明文为：
 
 ```
